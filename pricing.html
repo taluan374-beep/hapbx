@@ -80,7 +80,25 @@
         }
         .best-seller-card {
             transform: scale(1.02);
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.4), 0 0 100px rgba(139, 92, 246, 0.2);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .best-seller-card:hover {
+            transform: scale(1.02) translateY(-8px);
+            box-shadow: 0 0 80px rgba(99, 102, 241, 0.5), 0 0 120px rgba(139, 92, 246, 0.3), 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        .scroll-hint {
+            animation: pulse-hint 2s ease-in-out infinite;
+        }
+        @keyframes pulse-hint {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
         .toggle-switch {
             transition: all 0.3s ease;
@@ -194,7 +212,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 
                 <!-- Basic Plan -->
-                <div class="bg-dark-900 rounded-2xl border border-dark-700/50 p-8 hover:border-dark-600 transition-all duration-300">
+                <div class="pricing-card bg-dark-900 rounded-2xl border border-dark-700/50 p-8 hover:border-primary-500/50">
                     <div class="mb-6">
                         <h3 class="text-xl font-semibold mb-2">Basic</h3>
                         <p class="text-dark-400 text-sm">Perfect for small teams</p>
@@ -207,7 +225,7 @@
                         </div>
                         <p class="text-dark-500 text-sm mt-1 yearly-note hidden">billed annually</p>
                     </div>
-                    <a href="#" class="block w-full py-3 px-6 bg-dark-800 hover:bg-dark-700 border border-dark-600 rounded-xl font-medium text-center transition-all duration-300 mb-8">
+                    <a href="#" class="block w-full py-3 px-6 bg-dark-800 hover:bg-dark-700 active:bg-dark-600 border border-dark-600 hover:border-primary-500/50 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-lg mb-8">
                         Start Free Trial
                     </a>
                     <ul class="space-y-4">
@@ -245,7 +263,7 @@
                 </div>
 
                 <!-- Enterprise Plan -->
-                <div class="bg-dark-900 rounded-2xl border border-dark-700/50 p-8 hover:border-dark-600 transition-all duration-300">
+                <div class="pricing-card bg-dark-900 rounded-2xl border border-dark-700/50 p-8 hover:border-primary-500/50">
                     <div class="mb-6">
                         <h3 class="text-xl font-semibold mb-2">Enterprise</h3>
                         <p class="text-dark-400 text-sm">For growing businesses</p>
@@ -258,7 +276,7 @@
                         </div>
                         <p class="text-dark-500 text-sm mt-1 yearly-note hidden">billed annually</p>
                     </div>
-                    <a href="#" class="block w-full py-3 px-6 bg-dark-800 hover:bg-dark-700 border border-dark-600 rounded-xl font-medium text-center transition-all duration-300 mb-8">
+                    <a href="#" class="block w-full py-3 px-6 bg-dark-800 hover:bg-dark-700 active:bg-dark-600 border border-dark-600 hover:border-primary-500/50 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-lg mb-8">
                         Start Free Trial
                     </a>
                     <ul class="space-y-4">
@@ -301,12 +319,15 @@
                     </ul>
                 </div>
 
-                <!-- Call Center Plan - Best Seller -->
-                <div class="relative bg-dark-900 rounded-2xl border-2 border-primary-500 p-8 best-seller-card">
-                    <!-- Best Seller Badge -->
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-                        <span class="px-4 py-1.5 bg-gradient-to-r from-primary-600 to-purple-600 text-white text-sm font-semibold rounded-full">
-                            Best Seller
+                <!-- Call Center Plan - Most Popular -->
+                <div class="relative pricing-card bg-dark-900 rounded-2xl border-2 border-primary-500 p-8 best-seller-card">
+                    <!-- Most Popular Badge -->
+                    <div class="absolute -top-3 -right-3 z-10">
+                        <span class="px-4 py-2 bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-primary-500/30 flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            Most Popular
                         </span>
                     </div>
                     <div class="mb-6 mt-2">
@@ -321,7 +342,7 @@
                         </div>
                         <p class="text-dark-500 text-sm mt-1 yearly-note hidden">billed annually</p>
                     </div>
-                    <a href="#" class="block w-full py-3 px-6 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25 mb-8">
+                    <a href="#" class="block w-full py-3.5 px-6 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 active:from-primary-700 active:to-purple-700 rounded-xl font-semibold text-center transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/30 active:scale-[0.98] mb-8">
                         Start Free Trial
                     </a>
                     <ul class="space-y-4">
@@ -365,7 +386,7 @@
                 </div>
 
                 <!-- Multi-Tenant Plan -->
-                <div class="bg-dark-900 rounded-2xl border border-dark-700/50 p-8 hover:border-dark-600 transition-all duration-300">
+                <div class="pricing-card bg-dark-900 rounded-2xl border border-dark-700/50 p-8 hover:border-primary-500/50">
                     <div class="mb-6">
                         <h3 class="text-xl font-semibold mb-2">Multi-Tenant</h3>
                         <p class="text-dark-400 text-sm">For service providers</p>
@@ -378,7 +399,7 @@
                         </div>
                         <p class="text-dark-500 text-sm mt-1 yearly-note hidden">billed annually</p>
                     </div>
-                    <a href="#" class="block w-full py-3 px-6 bg-dark-800 hover:bg-dark-700 border border-dark-600 rounded-xl font-medium text-center transition-all duration-300 mb-8">
+                    <a href="#" class="block w-full py-3 px-6 bg-dark-800 hover:bg-dark-700 active:bg-dark-600 border border-dark-600 hover:border-primary-500/50 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-lg mb-8">
                         Contact Sales
                     </a>
                     <ul class="space-y-4">
@@ -436,6 +457,17 @@
                 </p>
             </div>
 
+            <!-- Scroll hint for mobile -->
+            <div class="md:hidden flex items-center justify-center gap-2 mb-4 text-dark-400 scroll-hint">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="text-sm">Scroll right to view more</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </div>
+            
             <div class="overflow-x-auto rounded-2xl border border-dark-700">
                 <table class="w-full min-w-[800px]">
                     <thead>
@@ -581,6 +613,122 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner & Affiliate Program Section -->
+    <section class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-gradient-to-br from-dark-900 to-dark-800 rounded-3xl border border-dark-700/50 overflow-hidden">
+                <!-- Background decorative elements -->
+                <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+                
+                <div class="relative grid lg:grid-cols-2 gap-8 lg:gap-12 p-8 lg:p-12">
+                    <!-- Text Content -->
+                    <div class="flex flex-col justify-center">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-primary-400 text-sm font-medium w-fit mb-6">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            Partnership Program
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                            Grow with Us – <span class="gradient-text">Become a Partner</span>
+                        </h2>
+                        <p class="text-lg text-dark-300 mb-6">
+                            Join our Reseller & Affiliate program. High commissions, white-label options, and dedicated support to help you succeed.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-dark-300">
+                                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Up to 30% recurring commissions</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-dark-300">
+                                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>White-label branding options</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-dark-300">
+                                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Dedicated partner success manager</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-dark-300">
+                                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Marketing resources & sales training</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border-2 border-white/80 hover:bg-white hover:text-dark-900 rounded-xl font-semibold transition-all duration-300 w-fit group">
+                            Apply for Partner
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Illustration / Visual -->
+                    <div class="flex items-center justify-center">
+                        <div class="relative w-full max-w-md">
+                            <!-- Main visual container -->
+                            <div class="bg-dark-800/50 backdrop-blur rounded-2xl border border-dark-600/50 p-8">
+                                <!-- Partner icons grid -->
+                                <div class="grid grid-cols-3 gap-4 mb-6">
+                                    <div class="bg-gradient-to-br from-primary-500/20 to-purple-500/20 rounded-xl p-4 flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl p-4 flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl p-4 flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <!-- Stats preview -->
+                                <div class="space-y-4">
+                                    <div class="bg-dark-900/50 rounded-xl p-4">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-dark-400 text-sm">Monthly Revenue</span>
+                                            <span class="text-green-400 text-sm font-medium">+24%</span>
+                                        </div>
+                                        <div class="text-2xl font-bold gradient-text">$12,450</div>
+                                    </div>
+                                    <div class="bg-dark-900/50 rounded-xl p-4">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-dark-400 text-sm">Active Referrals</span>
+                                            <span class="text-primary-400 text-sm font-medium">156 clients</span>
+                                        </div>
+                                        <div class="w-full bg-dark-700 rounded-full h-2">
+                                            <div class="bg-gradient-to-r from-primary-500 to-purple-500 h-2 rounded-full" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating badges -->
+                            <div class="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-lg">
+                                30% Commission
+                            </div>
+                            <div class="absolute -bottom-4 -left-4 bg-primary-500 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-lg">
+                                Lifetime Earnings
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -801,10 +949,10 @@
                 Join thousands of businesses that trust HAPBX for their communication needs. Get in touch with our team today.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#pricing-cards" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/25">
+                <a href="#pricing-cards" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 active:from-primary-700 active:to-purple-700 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/30 active:scale-[0.98]">
                     Start Free Trial
                 </a>
-                <a href="#" class="px-8 py-4 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-xl font-semibold text-lg transition-all duration-300">
+                <a href="#" class="px-8 py-4 bg-dark-800 hover:bg-dark-700 active:bg-dark-600 border border-dark-700 hover:border-primary-500/50 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg">
                     Contact Sales
                 </a>
             </div>
